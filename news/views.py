@@ -5,10 +5,9 @@ from .templatetags.censor import censor
 from django.contrib.auth.models import User
 
 
-
 def news_list(request):
-    articles = Post.objects.order_by('-created_at')  # Сортировка от более свежих к старым по полю created_at
-    context = {'articles': articles}
+    news = Post.objects.order_by('-created_at')  # Сортировка от более свежих к старым по полю created_at
+    context = {'news': news}
     return render(request, 'news/news_list.html', context)
 
 
