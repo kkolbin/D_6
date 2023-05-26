@@ -6,8 +6,9 @@
 
 {% block content %}
     <h2>Список новостей</h2>
+    <p>Количество новостей: {{ news|length }}</p>  <!-- Вывод количества новостей -->
     <ul>
-        {% for article in articles %}
+        {% for article in news %}
             <li>
                 <h3><a href="{% url 'news:article_detail' article.id %}">{{ article.title|censor }}</a></h3>
                 <p>{{ article.created_at|date:"d.m.Y" }}</p>
@@ -24,10 +25,4 @@
 {% endblock %}
 Теперь фильтр censor будет применяться как к заголовку статьи ({{ article.title|censor }}), так и к контенту статьи
 ({{ article.content|censor }}), чтобы удалить нежелательные слова в обоих случаях.
-
-
-
-
-
-
 
