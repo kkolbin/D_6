@@ -1,0 +1,19 @@
+{% extends 'news/default.html' %}
+
+{% load censor %}
+
+{% block title %}
+    {{ article.title|censor }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ article.title|censor }}</h2>
+    <p>{{ article.created_at|date:"d.m.Y" }}</p>
+    <p>Рейтинг: {{ article.rating }}</p>
+    <p>Категории:
+        {% for category in article.categories.all %}
+            <span>{{ category.name }}</span>
+        {% endfor %}
+    </p>
+    <p>{{ article.content|censor }}</p>
+{% endblock %}
